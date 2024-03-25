@@ -10,17 +10,7 @@
           sm="6"
           md="6"
         >
-          <v-card variant="tonal" class="item-card" height="200px" width="300px">
-            <v-card-title>{{ item.name }}</v-card-title>
-            <v-card-text>
-              <p>{{ item.description }}</p>
-              </v-card-text>
-            <v-card-actions>
-              <router-link :to="{ name: 'Product', params: { id: item.id }}">
-                <v-btn color="primary">View Details</v-btn>
-            </router-link>
-            </v-card-actions>
-          </v-card>
+          <DashboardItem :item="item"/>
         </v-col>
       </v-row>
     </div>
@@ -29,6 +19,7 @@
 
 <script setup lang="ts">
 import { useDataStore } from "../stores/DataStore"
+import DashboardItem from "../components/DashboardItem.vue"
 
 const dataStore = useDataStore()
 dataStore.fetchData()
