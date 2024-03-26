@@ -23,13 +23,14 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
 import { type Product, useDataStore } from '../stores/DataStore';
+import { computed } from 'vue';
 
 const route = useRoute();
 const dataStore = useDataStore();
 
 const productId: string = route.params.id as string;
 
-const item: Product = dataStore.getProduct(productId)
+const item = computed<Product>(() => dataStore.getProduct(productId))
 
 </script>
 
