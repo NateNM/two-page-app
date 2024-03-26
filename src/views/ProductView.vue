@@ -5,7 +5,7 @@
         <v-col cols="12" md="8">
           <v-card class="product-card">
             <v-img
-              :src="item.imageUrl"  
+              :src="item.url"  
               height="300px"
               object-fit="cover"
               alt="Find a picture to use becuase there isn't a item image url"
@@ -22,14 +22,14 @@
 
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
-import { Product, useDataStore } from '../stores/DataStore';
+import { type Product, useDataStore } from '../stores/DataStore';
 
 const route = useRoute();
 const dataStore = useDataStore();
 
 const productId: string = route.params.id as string;
 
-const item: Product = dataStore.items.find(item => item.id === productId);
+const item: Product = dataStore.getProduct(productId)
 
 </script>
 
